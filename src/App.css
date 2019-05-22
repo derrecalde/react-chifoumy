@@ -1,33 +1,144 @@
-.App {
+
+
+/*------------------------
+// Init main vars 
+*/
+
+:root {
+  --bg-color: #e7e7e7;
+}
+
+/* End init 
+-------------------------*/
+
+
+
+/*------------------------
+// Reset default style
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li{
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: 0;
+}
+
+/* End reset 
+-------------------------*/
+
+
+
+/*------------------------
+// Page Styles
+*/
+
+.selectors {
+  display: flex;  
+  align-items: center; 
+  justify-content: center;
+  margin-top: 20%; 
+}
+
+  .selectors li {    
+    position: absolute;
+    transition: all 0.5s;
+    transform: translate(-50%, 0%);
+    z-index: 5;    
+  }    
+
+  .selectors li:first-child{
+    animation: rotateSelectors 4s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+  .selectors :nth-child(2n){
+    animation: rotateSelectors 4s ease-in-out infinite;
+    animation-delay: 1.3s;
+  }
+  .selectors :nth-child(3n){
+    animation: rotateSelectors 4s ease-in-out infinite;
+    animation-delay: 2.6s;
+  }
+
+    .selectors li img {
+      width: 50%;
+      height: 50%;
+      max-width: 250px;
+      cursor: pointer;
+    }
+
+
+
+.computer-choice{
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .computer-choice img{
+    width: 50%;
+    height: 50%;
+    max-width: 150px;
   }
-  to {
-    transform: rotate(360deg);
+
+
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inherit;
+}
+
+/* End page styles 
+-------------------------*/
+
+
+/*------------------------
+// Animations
+*/
+@keyframes rotateColors{
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: none;
   }
 }
+@keyframes rotateSelectors{
+  0% {
+    transform: translate(-50%, 0%) scale(1);    
+    z-index: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate(50%, 0%) scale(1);    
+    z-index: 1;
+  }  
+  50% {
+    transform: translate(50%, 30%) scale(0.8);    
+    z-index: 0;
+    opacity: 0.2;
+  }
+  90% {
+    transform: translate(-50%, 30%) scale(0.8);    
+    z-index: 0;
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* End animations
+-----------------------*/
+
+

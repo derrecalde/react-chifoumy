@@ -45,6 +45,7 @@ export class Selector extends React.Component{
       // Reset rotation selectors
       for (var i = 0; i < selectors.length; i++) {
         selectors[i].style.animation = 'none'           
+        selectors[i].style.opacity = '1'           
       }     
 
      }, 2000);

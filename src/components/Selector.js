@@ -1,11 +1,101 @@
 import React from 'react';
 
+
+
 export class Selector extends React.Component{
+
+  // ===================================
+  // CONSTRUCTOR
   constructor(props){
     super(props)
     this.handleClick = this.handleClick.bind(this)
   }
+  // ===================================
 
+
+
+  // ===================================
+  // FRONT ANIMATIONS
+  frontAnimations(selected){
+
+    // -----------------------------------
+    // Get elements
+    let selectors      = selected.parentElement.parentElement.children 
+    let computerChoice = document.querySelector('.computer-choice')
+    let resultText     = document.querySelector('.computer-choice__text')
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Stop rotation selectors
+    for (var i = 0; i < selectors.length; i++) {
+      selectors[i].style.animationPlayState = 'paused'
+    }    
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Show selected element
+    selected.parentElement.style.animationPlayState = 'inherit'
+    selected.parentElement.classList.add('selected')
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Show computer choice
+    computerChoice.classList.remove('hidden')
+    computerChoice.classList.add('visible')
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Show result txt
+    resultText.classList.remove('hidden')
+    resultText.classList.add('computer-choice--show')
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Reset elements animations after X sec
+    setTimeout(() => { 
+
+      // Reset selected elements
+      selected.parentElement.classList.remove('selected')
+      computerChoice.classList.remove('visible')
+      computerChoice.classList.add('hidden')
+      resultText.classList.remove('computer-choice--show')
+      resultText.classList.add('hidden')
+      
+      // Reset rotation selectors
+      for (var i = 0; i < selectors.length; i++) {
+        selectors[i].style.animation = 'none'           
+        selectors[i].style.opacity = '1'           
+      }     
+
+    }, 2000);
+    // -----------------------------------
+
+
+    // -----------------------------------
+    // Re-start rotation animation
+    setTimeout(() => { 
+      
+      // Set animation to selectors
+      for (var i = 0; i < selectors.length; i++) {           
+        selectors[i].style.animation = 'rotateSelectors 4s ease-in-out infinite'
+        selectors[i].style.animationDelay = i+(i*0.3)+'s'                
+      } 
+
+    }, 3000);
+    // -----------------------------------
+
+  }
+  // ===================================
+
+
+
+  // ===================================
+  // GET SELECTED VALUE
   handleClick(e){
 
     // Get a valid clicked element
@@ -14,56 +104,15 @@ export class Selector extends React.Component{
     // Get value from props name <Selector />
     this.props.onClicker( selected.getAttribute('selection') );
 
-
-    // Style animations
-    let selectors = selected.parentElement.parentElement.children 
-    let computerChoice = document.querySelector('.computer-choice')
-
-    // Stop rotation selectors
-    for (var i = 0; i < selectors.length; i++) {
-      selectors[i].style.animationPlayState = 'paused'
-    }    
-
-    // Show selected element
-    selected.parentElement.style.animationPlayState = 'inherit'
-    selected.parentElement.classList.add('selected')
-
-    // Show computer choice
-    computerChoice.classList.remove('hidden')
-    computerChoice.classList.add('visible')
-
-
-
-    // Reset after X sec
-    setTimeout(() => { 
-
-      // Reset selected elements
-      selected.parentElement.classList.remove('selected')
-      computerChoice.classList.remove('visible')
-      computerChoice.classList.add('hidden')
-      
-      // Reset rotation selectors
-      for (var i = 0; i < selectors.length; i++) {
-        selectors[i].style.animation = 'none'           
-        selectors[i].style.opacity = '1'           
-      }     
-
-     }, 2000);
-
-
-    // Re-start rotation
-    setTimeout(() => { 
-      
-      // Re-start rotation selectors
-      for (var i = 0; i < selectors.length; i++) {           
-        selectors[i].style.animation = 'rotateSelectors 4s ease-in-out infinite'
-        selectors[i].style.animationDelay = i+(i*0.3)+'s'                
-      } 
-
-    }, 3000);
-
+    // Start front animations
+    this.frontAnimations(selected)
   }
+  // ===================================
 
+
+
+  // ===================================
+  // RENDER
   render(){
     return(
       <div>
@@ -75,4 +124,7 @@ export class Selector extends React.Component{
       </div>
     )
   }
-}
+  // ===================================
+
+
+} // END CLASS

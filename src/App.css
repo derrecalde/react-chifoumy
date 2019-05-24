@@ -31,6 +31,10 @@ button {
   border: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 /* End reset 
 -------------------------*/
 
@@ -40,11 +44,54 @@ button {
 // Page Styles
 */
 
+
+.head {
+  width: 100%;
+  height: 50px;
+  background-image: linear-gradient(to top,  rgb(0, 132, 255),  rgb(61, 174, 250));
+  border-bottom: 1px solid rgb(169, 219, 248);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);   
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.head__user-score p, .head__title h1, .head__computer-score p {
+  padding: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.head__user-score {
+  font-weight: bold;
+}
+
+.head__title {
+  text-align: center;  
+  
+}
+
+  .head__title h1 {    
+    font-size: 25px;
+    margin-top: 10px;
+    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);   
+  }
+
+.head__computer-score {
+  text-align: right;
+  font-weight: bold;
+}
+
+
+/*- Cards -*/
+
 .selectors {
   display: flex;  
   align-items: center; 
   justify-content: center;
-  margin-top: 20%; 
+  margin-top: 15%; 
 }
 
   .selectors li {    
@@ -68,26 +115,58 @@ button {
     animation-delay: 2.6s;
   }
 
-    .selectors li img {
+    .selectors li img, .computer-choice img {
       width: 50%;
       height: 50%;
       max-width: 250px;
+      width: 150px;
+      height: 250px;
+      padding: 1em;
       cursor: pointer;
+      background-image: linear-gradient(to top,  rgb(213, 224, 243),  rgb(255, 255, 255));
+      border-radius: 5%;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);   
+      border: 3px solid rgb(255, 255, 255); 
     }
 
 
 .computer-choice{
   width: 100%;
   text-align: center;
+  margin-left: 1em;
+  margin-top: 15%;
 }
 
-  .computer-choice img{ 
-    width: 50%;
-    height: 50%;
-    max-width: 150px;
+.computer-choice__text {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin-bottom: 5%;
+  margin-left: 1em;
+}
+
+  .computer-choice__text h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    font-weight: 100;
+    color: rgb(70, 70, 70);
+    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    bottom: 100px;
   }
 
+  .computer-choice--show {
+    animation: selectedToShow 0.5s cubic-bezier(0, 0, 0.6, 1.8);  
+    animation-direction: alternate;
+    transform: translate(0%, -50%);
+    opacity: 1;  
+  }
 
+/*- End Cards -*/
+
+
+
+/*- Effects -*/
 
 .hidden {
   animation: selectedToHide 0.5s cubic-bezier(0, 0, 0.6, 1.8);  
@@ -96,7 +175,6 @@ button {
 }
 
 .visible {
-  display: inherit;
   animation: selectedToShow 0.3s cubic-bezier(0, 0, 0.6, 1.8);  
   transform: translate(0%, -50%);
   animation-direction: alternate;
@@ -109,6 +187,9 @@ button {
   animation-direction: alternate;
   opacity: 1 !important;  
 }
+
+/*- End Effects -*/
+
 
 /* End page styles 
 -------------------------*/

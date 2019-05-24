@@ -111,7 +111,7 @@ export class Results extends React.Component{
           </div>
 
           <div className="head__title" >
-            <h1>Chifoumy</h1>
+            <h1>ChiFouMy</h1>
           </div>
 
           <div className="head__computer-score" >
@@ -124,7 +124,7 @@ export class Results extends React.Component{
           {resultComputer} 
         </div>
 
-        <div className="computer-choice__text computer-choice--show hidden" >
+        <div className="computer-choice__text hidden" >
           <h2>{resultTxt}</h2>
         </div>
         
